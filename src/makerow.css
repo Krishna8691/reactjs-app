@@ -1,0 +1,14 @@
+.rowbtn {
+    background-color: white;
+    border: 2px solid red;
+    outline: none;
+    width: 75px;
+    height: 25px;
+    color: black;
+    font-weight: bold;
+}
+
+.rowbtn:hover {
+    background-color: gainsboro;
+    cursor: pointer;
+}

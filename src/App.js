@@ -25,15 +25,10 @@ class App extends React.Component {
   }
 
   handleDeleteClick = function (index) {
-    var updatedData = [];
-    for (var i = 0; i < this.state.tabledata.length; i++) {
-      if (i === index) {
-        continue;
-      }
-      else {
-        updatedData.push(this.state.tabledata[i]);
-      }
-    }
+    var updatedData = this.state.tabledata.filter((value, i)=>{
+      if(index !== i) { return true; }
+      else { return false; }
+    });
     this.setState({
       tabledata: updatedData,
     });
@@ -47,14 +42,18 @@ class App extends React.Component {
     }, 1000);
   }
 
+  addRowButtonClick = this.handleClick.bind(this);
+  deleteButtonClick = this.handleDeleteClick.bind(this);
+
   render() {
+    const { tabledata, tableheaders } = this.state;
     return (
       <div className="App">
-        <h1>My App</h1>
+        <h1><u>Assignment 4</u></h1>
         <Time date={this.state.date} />
-        <Addrowbutton onclick={this.handleClick.bind(this)} /> <br />
-        <Table tabledata={this.state.tabledata} tableheaders={this.state.tableheaders}
-          onDeleteClick={this.handleDeleteClick.bind(this)} />
+        <Addrowbutton onclick={this.addRowButtonClick} /> <br />
+        <Table tabledata={tabledata} tableheaders={tableheaders}
+          onDeleteClick={this.deleteButtonClick} />
       </div>
     );
   }

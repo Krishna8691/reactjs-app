@@ -13,7 +13,7 @@ class Makerow extends React.Component {
             <td>{this.props.id+1}</td>
             <td>{this.props.item}</td>
             {/* <td><button id={this.props.id} onClick={this.props.onDeleteClick.bind(this, this.props.id)}>Delete</button></td> */}
-            <td><button className="rowbtn" id={this.props.id} onClick={this.handleDelete.bind(this, this.props.id)}>Delete</button></td>
+            <td><button className="rowbtn" id={this.props.id} onClick={this.handleDelete.bind(this, this.props.id)}>X</button></td>
         </tr>
     }
 }

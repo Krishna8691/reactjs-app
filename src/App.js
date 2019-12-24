@@ -3,7 +3,7 @@ import './App.css';
 import Time from './Time';
 import Addrowbutton from './add_row';
 import Table from './table';
-
+import Learn from './learn';
 
 class App extends React.Component {
 
@@ -13,6 +13,7 @@ class App extends React.Component {
       date: new Date().toLocaleString(),
       tabledata: [],
       tableheaders: ["No.", "Time", "Action"],
+      y: 0
     };
   }
 
@@ -45,15 +46,21 @@ class App extends React.Component {
   addRowButtonClick = this.handleClick.bind(this);
   deleteButtonClick = this.handleDeleteClick.bind(this);
 
+
+  _onMouseMove(e) {
+    this.setState({ x: e.screenX, y: e.screenY });
+  }
+
   render() {
     const { tabledata, tableheaders } = this.state;
     return (
-      <div className="App">
+      <div className="App" onMouseMove={this._onMouseMove.bind(this)}>
         <h1><u>Assignment 4</u></h1>
         <Time date={this.state.date} />
         <Addrowbutton onclick={this.addRowButtonClick} /> <br />
         <Table tabledata={tabledata} tableheaders={tableheaders}
           onDeleteClick={this.deleteButtonClick} />
+        <Learn x={this.state.x} y={this.state.y} mousemove={this._onMouseMove.bind(this)} />
       </div>
     );
   }
